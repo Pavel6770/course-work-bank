@@ -1,0 +1,684 @@
+{
+  "card_info": {
+    "card_type": "МИР",
+    "bank": "Сбербанк",
+    "card_number": "79001234567",
+    "formatted_card_number": "+7 (900) 123-45-67"
+  },
+  "summary": {
+    "total_transactions": 6705,
+    "total_expenses": 9965777,
+    "total_incomes": 8037215,
+    "balance": -1928562
+  },
+  "top_categories": [
+    {
+      "category": "Переводы",
+      "amount": 4942002
+    },
+    {
+      "category": "Без категории",
+      "amount": 1447440
+    },
+    {
+      "category": "Образование",
+      "amount": 651056
+    },
+    {
+      "category": "Наличные",
+      "amount": 632407
+    },
+    {
+      "category": "Супермаркеты",
+      "amount": 378115
+    },
+    {
+      "category": "Другое",
+      "amount": 245604
+    },
+    {
+      "category": "ЖКХ",
+      "amount": 207170
+    },
+    {
+      "category": "Остальное",
+      "amount": 1461980
+    }
+  ],
+  "top_cashback": [
+    {
+      "category": "Ж/д билеты",
+      "cashback": 3410
+    },
+    {
+      "category": "Супермаркеты",
+      "cashback": 1694
+    },
+    {
+      "category": "Аптеки",
+      "cashback": 1550
+    }
+  ],
+  "currency_rates": [
+    {
+      "currency": "USD",
+      "rate": 92.5
+    },
+    {
+      "currency": "EUR",
+      "rate": 100.2
+    }
+  ],
+  "stock_prices": [
+    {
+      "stock": "SBER",
+      "price": 320.5
+    },
+    {
+      "stock": "GAZP",
+      "price": 180.3
+    }
+  ],
+  "transactions": [
+    {
+      "date": "31.12.2021",
+      "amount": 160.89,
+      "category": "Супермаркеты",
+      "description": "Колхоз"
+    },
+    {
+      "date": "31.12.2021",
+      "amount": 64.0,
+      "category": "Супермаркеты",
+      "description": "Колхоз"
+    },
+    {
+      "date": "31.12.2021",
+      "amount": 118.12,
+      "category": "Супермаркеты",
+      "description": "Магнит"
+    },
+    {
+      "date": "31.12.2021",
+      "amount": 78.05,
+      "category": "Супермаркеты",
+      "description": "Колхоз"
+    },
+    {
+      "date": "31.12.2021",
+      "amount": 564.0,
+      "category": "Различные товары",
+      "description": "Ozon.ru"
+    },
+    {
+      "date": "31.12.2021",
+      "amount": 800.0,
+      "category": "Переводы",
+      "description": "Константин Л."
+    },
+    {
+      "date": "30.12.2021",
+      "amount": 20000.0,
+      "category": "Переводы",
+      "description": "Константин Л."
+    },
+    {
+      "date": "30.12.2021",
+      "amount": 7.07,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "30.12.2021",
+      "amount": 1.32,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "30.12.2021",
+      "amount": 5046.0,
+      "category": "Пополнения",
+      "description": "Пополнение через Газпромбанк"
+    },
+    {
+      "date": "30.12.2021",
+      "amount": 174000.0,
+      "category": "Пополнения",
+      "description": "Пополнение через Газпромбанк"
+    },
+    {
+      "date": "30.12.2021",
+      "amount": 349.0,
+      "category": "Канцтовары",
+      "description": "Mitrankov M.V."
+    },
+    {
+      "date": "29.12.2021",
+      "amount": 1411.4,
+      "category": "Ж/д билеты",
+      "description": "РЖД"
+    },
+    {
+      "date": "29.12.2021",
+      "amount": 1411.4,
+      "category": "Ж/д билеты",
+      "description": "РЖД"
+    },
+    {
+      "date": "29.12.2021",
+      "amount": 120.0,
+      "category": "Фастфуд",
+      "description": "Mouse Tail"
+    },
+    {
+      "date": "29.12.2021",
+      "amount": 383.0,
+      "category": "Дом и ремонт",
+      "description": "МаксидоМ"
+    },
+    {
+      "date": "29.12.2021",
+      "amount": 67.1,
+      "category": "Дом и ремонт",
+      "description": "Леруа Мерлен"
+    },
+    {
+      "date": "28.12.2021",
+      "amount": 257.89,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "28.12.2021",
+      "amount": 210.0,
+      "category": "Дом и ремонт",
+      "description": "Галамарт"
+    },
+    {
+      "date": "28.12.2021",
+      "amount": 1840.0,
+      "category": "Дом и ремонт",
+      "description": "Галамарт"
+    },
+    {
+      "date": "28.12.2021",
+      "amount": 381.48,
+      "category": "Супермаркеты",
+      "description": "Колхоз"
+    },
+    {
+      "date": "28.12.2021",
+      "amount": 34.0,
+      "category": "Фастфуд",
+      "description": "Rumyanyj Khleb"
+    },
+    {
+      "date": "28.12.2021",
+      "amount": 422.22,
+      "category": "Супермаркеты",
+      "description": "Магнит"
+    },
+    {
+      "date": "28.12.2021",
+      "amount": 250.0,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "27.12.2021",
+      "amount": 123.0,
+      "category": "Аптеки",
+      "description": "Apteka 23"
+    },
+    {
+      "date": "27.12.2021",
+      "amount": 35.0,
+      "category": "Связь",
+      "description": "Devajs Servis."
+    },
+    {
+      "date": "27.12.2021",
+      "amount": 40.0,
+      "category": "Супермаркеты",
+      "description": "Evo_Lyzhnyj"
+    },
+    {
+      "date": "27.12.2021",
+      "amount": 33.54,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "26.12.2021",
+      "amount": 415.32,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "26.12.2021",
+      "amount": 228.0,
+      "category": "Такси",
+      "description": "Яндекс Такси"
+    },
+    {
+      "date": "26.12.2021",
+      "amount": 34.0,
+      "category": "Транспорт",
+      "description": "Bars 2"
+    },
+    {
+      "date": "26.12.2021",
+      "amount": 9.64,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "26.12.2021",
+      "amount": 600.0,
+      "category": "Цветы",
+      "description": "IP Isaeva O.N."
+    },
+    {
+      "date": "26.12.2021",
+      "amount": 34.0,
+      "category": "Фастфуд",
+      "description": "Rumyanyj Khleb"
+    },
+    {
+      "date": "25.12.2021",
+      "amount": 218.07,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "25.12.2021",
+      "amount": 115.01,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "25.12.2021",
+      "amount": 17.33,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "25.12.2021",
+      "amount": 290.0,
+      "category": "Фастфуд",
+      "description": "IP Tupikova A.O."
+    },
+    {
+      "date": "25.12.2021",
+      "amount": 5.7,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "25.12.2021",
+      "amount": 3400.0,
+      "category": "Развлечения",
+      "description": "sevs.eduerp.ru"
+    },
+    {
+      "date": "24.12.2021",
+      "amount": 100.2,
+      "category": "Госуслуги",
+      "description": "Почта России"
+    },
+    {
+      "date": "24.12.2021",
+      "amount": 78.0,
+      "category": "Госуслуги",
+      "description": "Почта России"
+    },
+    {
+      "date": "24.12.2021",
+      "amount": 53.83,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "24.12.2021",
+      "amount": 34.0,
+      "category": "Фастфуд",
+      "description": "Rumyanyj Khleb"
+    },
+    {
+      "date": "24.12.2021",
+      "amount": 2000.0,
+      "category": "Переводы",
+      "description": "На р/с ООО \"ФОРТУНА\""
+    },
+    {
+      "date": "24.12.2021",
+      "amount": 500.0,
+      "category": "Местный транспорт",
+      "description": "Метро Санкт-Петербург"
+    },
+    {
+      "date": "23.12.2021",
+      "amount": 1.51,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "23.12.2021",
+      "amount": 2000.0,
+      "category": "Переводы",
+      "description": "Дмитрий Ш."
+    },
+    {
+      "date": "23.12.2021",
+      "amount": 201.0,
+      "category": "Канцтовары",
+      "description": "IP Mitrankov M V"
+    },
+    {
+      "date": "23.12.2021",
+      "amount": 20000.0,
+      "category": "Другое",
+      "description": "Иван С."
+    },
+    {
+      "date": "23.12.2021",
+      "amount": 10000.0,
+      "category": "Переводы",
+      "description": "Светлана Т."
+    },
+    {
+      "date": "23.12.2021",
+      "amount": 50.0,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "23.12.2021",
+      "amount": 250.0,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "23.12.2021",
+      "amount": 50.0,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "23.12.2021",
+      "amount": 250.0,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "22.12.2021",
+      "amount": 28001.94,
+      "category": "Переводы",
+      "description": "Перевод Кредитная карта. ТП 10.2 RUR"
+    },
+    {
+      "date": "22.12.2021",
+      "amount": 28001.94,
+      "category": "Переводы",
+      "description": "Перевод Кредитная карта. ТП 10.2 RUR"
+    },
+    {
+      "date": "22.12.2021",
+      "amount": 26.19,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "22.12.2021",
+      "amount": 50.0,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "22.12.2021",
+      "amount": 250.0,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "22.12.2021",
+      "amount": 50.0,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "22.12.2021",
+      "amount": 250.0,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "22.12.2021",
+      "amount": 60.0,
+      "category": "Супермаркеты",
+      "description": "Колхоз"
+    },
+    {
+      "date": "22.12.2021",
+      "amount": 34.0,
+      "category": "Фастфуд",
+      "description": "Rumyanyj Khleb"
+    },
+    {
+      "date": "21.12.2021",
+      "amount": 15.0,
+      "category": "Другое",
+      "description": "Google"
+    },
+    {
+      "date": "21.12.2021",
+      "amount": 15.0,
+      "category": "Другое",
+      "description": "Google"
+    },
+    {
+      "date": "21.12.2021",
+      "amount": 100.0,
+      "category": "Фастфуд",
+      "description": "IP Nelikaev"
+    },
+    {
+      "date": "21.12.2021",
+      "amount": 7.94,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "21.12.2021",
+      "amount": 1198.23,
+      "category": "Переводы",
+      "description": "Перевод Кредитная карта. ТП 10.2 RUR"
+    },
+    {
+      "date": "21.12.2021",
+      "amount": 1198.23,
+      "category": "Переводы",
+      "description": "Перевод Кредитная карта. ТП 10.2 RUR"
+    },
+    {
+      "date": "20.12.2021",
+      "amount": 120.0,
+      "category": "Фастфуд",
+      "description": "ЛюдиЛюбят"
+    },
+    {
+      "date": "20.12.2021",
+      "amount": 1400.0,
+      "category": "Дом и ремонт",
+      "description": "YM*o481"
+    },
+    {
+      "date": "20.12.2021",
+      "amount": 421.0,
+      "category": "Различные товары",
+      "description": "Ozon.ru"
+    },
+    {
+      "date": "20.12.2021",
+      "amount": 232.96,
+      "category": "Бонусы",
+      "description": "Выплата по вашему обращению"
+    },
+    {
+      "date": "20.12.2021",
+      "amount": 495.0,
+      "category": "Бонусы",
+      "description": "Выплата по вашему обращению"
+    },
+    {
+      "date": "20.12.2021",
+      "amount": 34.0,
+      "category": "Фастфуд",
+      "description": "Rumyanyj Khleb"
+    },
+    {
+      "date": "20.12.2021",
+      "amount": 172.69,
+      "category": "Супермаркеты",
+      "description": "Дикси"
+    },
+    {
+      "date": "19.12.2021",
+      "amount": 42.92,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "19.12.2021",
+      "amount": 186.0,
+      "category": "Переводы",
+      "description": "Андрей Х."
+    },
+    {
+      "date": "19.12.2021",
+      "amount": 229.0,
+      "category": "Фастфуд",
+      "description": "Evo_Kebab Bar"
+    },
+    {
+      "date": "19.12.2021",
+      "amount": 120.0,
+      "category": "Фастфуд",
+      "description": "Mouse Tail"
+    },
+    {
+      "date": "19.12.2021",
+      "amount": 250.0,
+      "category": "Связь",
+      "description": "МТС"
+    },
+    {
+      "date": "18.12.2021",
+      "amount": 120.0,
+      "category": "Фастфуд",
+      "description": "Mouse Tail"
+    },
+    {
+      "date": "18.12.2021",
+      "amount": 200.0,
+      "category": "Переводы",
+      "description": "Андрей Х."
+    },
+    {
+      "date": "18.12.2021",
+      "amount": 176.0,
+      "category": "Топливо",
+      "description": "ЛУКОЙЛ"
+    },
+    {
+      "date": "18.12.2021",
+      "amount": 26.0,
+      "category": "Транспорт",
+      "description": "Pskovpassazhiravtotrans."
+    },
+    {
+      "date": "18.12.2021",
+      "amount": 829.0,
+      "category": "Супермаркеты",
+      "description": "Лента"
+    },
+    {
+      "date": "17.12.2021",
+      "amount": 232.96,
+      "category": "Услуги банка",
+      "description": "Плата за Программу страховой защиты"
+    },
+    {
+      "date": "17.12.2021",
+      "amount": 1.0,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "17.12.2021",
+      "amount": 495.0,
+      "category": "Услуги банка",
+      "description": "Плата за обслуживание"
+    },
+    {
+      "date": "17.12.2021",
+      "amount": 229.0,
+      "category": "Фастфуд",
+      "description": "Evo_Kebab Bar"
+    },
+    {
+      "date": "17.12.2021",
+      "amount": 100.0,
+      "category": "Сервис",
+      "description": "BlaBlaCar"
+    },
+    {
+      "date": "17.12.2021",
+      "amount": 192.78,
+      "category": "Супермаркеты",
+      "description": "Колхоз"
+    },
+    {
+      "date": "17.12.2021",
+      "amount": 214.46,
+      "category": "Супермаркеты",
+      "description": "Магнит"
+    },
+    {
+      "date": "17.12.2021",
+      "amount": 120.0,
+      "category": "Фастфуд",
+      "description": "Mouse Tail"
+    },
+    {
+      "date": "16.12.2021",
+      "amount": 453.0,
+      "category": "Бонусы",
+      "description": "Кэшбэк за обычные покупки"
+    },
+    {
+      "date": "16.12.2021",
+      "amount": 130.82,
+      "category": "Бонусы",
+      "description": "Проценты на остаток"
+    },
+    {
+      "date": "16.12.2021",
+      "amount": 14216.42,
+      "category": "ЖКХ",
+      "description": "ЖКУ Квартира"
+    },
+    {
+      "date": "16.12.2021",
+      "amount": 11.49,
+      "category": "Каршеринг",
+      "description": "Ситидрайв"
+    },
+    {
+      "date": "16.12.2021",
+      "amount": 1150.0,
+      "category": "Дом и ремонт",
+      "description": "Ofisnaya mebel"
+    }
+  ]
+}

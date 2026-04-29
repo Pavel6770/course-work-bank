@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анализ транзакций</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .greeting { text-align: center; font-size: 28px; color: #667eea; margin-bottom: 10px; font-weight: bold; }
+        h1 { text-align: center; color: #333; margin-bottom: 20px; font-size: 20px; }
+        .period-selector { text-align: center; margin-bottom: 20px; }
+        .period-btn { background: #667eea; color: white; border: none; padding: 8px 16px; margin: 0 5px; border-radius: 5px; cursor: pointer; }
+        .period-btn:hover { background: #5a67d8; }
+        .period-btn.active { background: #27ae60; }
+        .card { background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .stat { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; text-align: center; }
+        .stat h3 { font-size: 12px; opacity: 0.9; margin-bottom: 5px; }
+        .stat p { font-size: 28px; font-weight: bold; }
+        .balance { background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #f0f0f0; }
+        .search-box { width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; }
+        .category-list { display: flex; flex-wrap: wrap; gap: 10px; }
+        .category-item { background: #e0e0e0; padding: 5px 10px; border-radius: 5px; font-size: 14px; }
+        .amount { font-weight: bold; color: #e74c3c; }
+        .amount-positive { color: #27ae60; }
+        .cashback-positive { color: #f39c12; font-weight: bold; }
+        .section-title { margin-bottom: 15px; color: #333; border-left: 4px solid #667eea; padding-left: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="greeting" id="greeting">Загрузка...</div>
+        <h1>💰 Анализ банковских транзакций</h1>
+        
+        <div class="period-selector">
+            <button class="period-btn active" data-period="M">Месяц</button>
+            <button class="period-btn" data-period="W">Неделя</button>
+            <button class="period-btn" data-period="Y">Год</button>
+            <button class="period-btn" data-period="ALL">Всё время</button>
+        </div>
+        
+        <div class="stats" id="stats"></div>
+        
+        <div class="card">
+            <h3 class="section-title">🔍 Поиск по всем транзакциям</h3>
+            <input type="text" class="search-box" id="searchInput" placeholder="Введите текст для поиска...">
+            <div id="searchResults"></div>
+        </div>
+        
+        <div class="card">
+            <h3 class="section-title">📊 Расходы по категориям</h3>
+            <div id="expensesCategories"></div>
+        </div>
+        
+        <div class="card">
+            <h3 class="section-title">💰 Поступления по категориям</h3>
+            <div id="incomesCategories"></div>
+        </div>
+        
+        <div class="card">
+            <h3 class="section-title">💳 Переводы и наличные</h3>
+            <div id="transfersCash"></div>
+        </div>
+    </div>
+    
+    <script>
+        const queryDate = '2021-12-31 12:00:00';
+        let currentPeriod = 'M';
+        
+        function loadData() {
+            fetch('/api/events?date=' + encodeURIComponent(queryDate) + '&period=' + currentPeriod)
+                .then(res => res.json())
+                .then(data => {
+                    // Расходы всего
+                    document.getElementById('stats').innerHTML = `
+                        <div class="stat"><h3>💰 Расходы</h3><p>${data.expenses.total.toLocaleString()} ₽</p></div>
+                        <div class="stat"><h3>📈 Поступления</h3><p>${data.incomes.total.toLocaleString()} ₽</p></div>
+                        <div class="stat balance"><h3>💳 Остаток</h3><p>${(data.incomes.total - data.expenses.total).toLocaleString()} ₽</p></div>
+                    `;
+                    
+                    // Расходы по категориям
+                    document.getElementById('expensesCategories').innerHTML = `
+                        <h4>Основные категории (топ-7 + Остальное)</h4>
+                        <div class="category-list">
+                            ${data.expenses.main.map(c => `<div class="category-item"><strong>${c.category}</strong>: ${c.amount.toLocaleString()} ₽</div>`).join('')}
+                        </div>
+                    `;
+                    
+                    // Поступления по категориям
+                    document.getElementById('incomesCategories').innerHTML = `
+                        <h4>Поступления</h4>
+                        <div class="category-list">
+                            ${data.incomes.main.map(c => `<div class="category-item"><strong>${c.category}</strong>: ${c.amount.toLocaleString()} ₽</div>`).join('')}
+                        </div>
+                    `;
+                    
+                    // Переводы и наличные
+                    if (data.expenses.transfers_cash && data.expenses.transfers_cash.length > 0) {
+                        document.getElementById('transfersCash').innerHTML = `
+                            <div class="category-list">
+                                ${data.expenses.transfers_cash.map(c => `<div class="category-item"><strong>${c.category}</strong>: ${c.amount.toLocaleString()} ₽</div>`).join('')}
+                            </div>
+                        `;
+                    } else {
+                        document.getElementById('transfersCash').innerHTML = '<p>Нет данных по переводам и наличным</p>';
+                    }
+                });
+        }
+        
+        // Обработчики кнопок периода
+        document.querySelectorAll('.period-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentPeriod = this.dataset.period;
+                loadData();
+            });
+        });
+        
+        loadData();
+        
+        // Поиск
+        let searchTimeout;
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const query = e.target.value.trim();
+                if (query.length >= 2) {
+                    fetch(`/api/search?q=${encodeURIComponent(query)}`)
+                        .then(res => res.json())
+                        .then(data => {
+                            const resultsDiv = document.getElementById('searchResults');
+                            if (data.length === 0) {
+                                resultsDiv.innerHTML = '<p style="text-align: center; color: #999;">🔍 Ничего не найдено</p>';
+                                return;
+                            }
+                            resultsDiv.innerHTML = `
+                                <div style="margin-bottom: 10px; font-weight: bold;">📋 Найдено ${data.length} транзакций:</div>
+                                <table style="width: 100%;">
+                                    <thead>
+                                        <tr><th>Дата</th><th>Сумма</th><th>Категория</th><th>Описание</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        ${data.slice(0, 30).map(t => `
+                                            <tr>
+                                                <td>${t.date}</td>
+                                                <td class="${t.amount < 0 ? 'amount' : 'amount-positive'}">${Math.abs(t.amount).toLocaleString()} ₽</td>
+                                                <td>${t.category}</td>
+                                                <td>${t.description}</td>
+                                            </tr>
+                                        `).join('')}
+                                    </tbody>
+                                </table>
+                                ${data.length > 30 ? `<p style="margin-top: 10px;">... и ещё ${data.length - 30} транзакций</p>` : ''}
+                            `;
+                        });
+                } else {
+                    document.getElementById('searchResults').innerHTML = '';
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+# Виртуальное окружение
+venv/
+.venv/
+env/
+.env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Логи и временные файлы
+*.log
+*.tmp
+*.bak
+
+# Отчёты (JSON файлы, которые создаются при работе)
+spending_by_*.json
+
+# Настройки с паролями (если появятся)
+.secrets
+config.local.py
+
+# Тестовые временные файлы
+check_*.py
+debug_*.py
+test_*.py
+!tests/test_*.py
+
+# Файлы данных (если большие)
+data/operations.xlsx
