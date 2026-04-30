@@ -44,13 +44,13 @@ def api_events():
 def api_search():
     query = request.args.get("q", "")
     logger.info(f"API search: query={query}")
-    
+
     from modules.search import search_transactions
     from data_loader import get_transactions
-    
+
     transactions = get_transactions()
     results = search_transactions(transactions, query)
-    
+
     return jsonify(results[:100])
 
 

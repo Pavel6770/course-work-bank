@@ -1,6 +1,7 @@
 class Product:
-    def __init__(self, name: str, price: float, quantity: int):
+    def __init__(self, name: str, description: str, price: float, quantity: int):
         self.name = name
+        self.description = description
         self.price = price
         self.quantity = quantity
 
@@ -10,4 +11,4 @@ class Product:
         return (self.price * self.quantity) + (other.price * other.quantity)
 
     def __repr__(self):
-        return f"{self.__class__.__name__}(name={self.name}, price={self.price}, quantity={self.quantity})"
+        return f"{self.__class__.__name__}(name={self.name}, description={self.description[:30]}..., price={self.price}, quantity={self.quantity})"

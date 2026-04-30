@@ -32,12 +32,14 @@ def home():
 
 @app.route("/api/summary")
 def api_summary():
-    return jsonify({
-        "total_transactions": len(transactions),
-        "total_expenses": round(total_expenses),
-        "total_incomes": round(total_incomes),
-        "balance": round(total_incomes - total_expenses)
-    })
+    return jsonify(
+        {
+            "total_transactions": len(transactions),
+            "total_expenses": round(total_expenses),
+            "total_incomes": round(total_incomes),
+            "balance": round(total_incomes - total_expenses),
+        }
+    )
 
 
 @app.route("/api/categories")

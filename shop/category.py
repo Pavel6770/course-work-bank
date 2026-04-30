@@ -1,27 +1,15 @@
 from typing import List
-from shop.base_product import Product
+from shop.product import Product
 
 
 class Category:
-    """
-    Категория товаров.
-    Позволяет добавлять только объекты, являющиеся наследниками Product.
-    """
+    category_count = 0
+    product_count = 0
 
-    def __init__(self, name: str):
+    def __init__(self, name: str, description: str, products: List[Product]):
         self.name = name
-        self.products: List[Product] = []
+        self.description = description
+        self.products = products
 
-    def add_product(self, product: Product) -> None:
-        """
-        Добавляет продукт в категорию только если это экземпляр Product или его наследник.
-        """
-        if not isinstance(product, Product):
-            raise TypeError(f"Можно добавлять только объекты Product, передан {type(product).__name__}")
-        self.products.append(product)
-
-    def total_price(self) -> float:
-        """
-        Общая стоимость всех товаров в категории.
-        """
-        return sum(p.price * p.quantity for p in self.products)
+        Category.category_count += 1
+        Category.product_count += len(products)

@@ -29,7 +29,7 @@ def format_categories(categories: Dict[str, float]) -> List[Dict[str, Any]]:
 
 if __name__ == "__main__":
     from data_loader import get_test_transactions
-    
+
     test_data = get_test_transactions()
     expenses = group_by_category(test_data)
     top = get_top_categories(expenses)

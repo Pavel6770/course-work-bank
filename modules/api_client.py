@@ -11,15 +11,10 @@ def load_user_settings() -> Dict[str, Any]:
 def get_currency_rates(currencies: List[str]) -> List[Dict[str, Any]]:
     """Получает текущие курсы валют к RUB."""
     rates = []
-    
+
     # Моковые данные для демонстрации (если API не работает)
-    mock_rates = {
-        "USD": 92.50,
-        "EUR": 100.20,
-        "GBP": 115.30,
-        "CNY": 12.80
-    }
-    
+    mock_rates = {"USD": 92.50, "EUR": 100.20, "GBP": 115.30, "CNY": 12.80}
+
     try:
         # Попробуем получить реальные курсы
         url = "https://api.frankfurter.app/latest?from=RUB"
@@ -40,25 +35,20 @@ def get_currency_rates(currencies: List[str]) -> List[Dict[str, Any]]:
         for currency in currencies:
             rate = mock_rates.get(currency, 0)
             rates.append({"currency": currency, "rate": rate})
-    
+
     return rates
 
 
 def get_stock_prices(stocks: List[str]) -> List[Dict[str, Any]]:
     """Получает текущие цены акций."""
     prices = []
-    
+
     # Моковые данные для демонстрации
-    mock_prices = {
-        "AAPL": 175.50,
-        "AMZN": 145.30,
-        "GOOGL": 138.20,
-        "MSFT": 420.80,
-        "TSLA": 215.60
-    }
-    
+    mock_prices = {"AAPL": 175.50, "AMZN": 145.30, "GOOGL": 138.20, "MSFT": 420.80, "TSLA": 215.60}
+
     try:
         import yfinance as yf
+
         for stock in stocks:
             ticker = yf.Ticker(stock)
             hist = ticker.history(period="1d")
@@ -75,7 +65,7 @@ def get_stock_prices(stocks: List[str]) -> List[Dict[str, Any]]:
         print(f"Ошибка получения цен акций: {e}")
         for stock in stocks:
             prices.append({"stock": stock, "price": mock_prices.get(stock, 100.0)})
-    
+
     return prices
 
 
