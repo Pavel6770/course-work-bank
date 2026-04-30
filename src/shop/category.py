@@ -1,5 +1,5 @@
 from typing import List
-from shop.product import Product
+from src.shop.product import Product
 
 
 class CategoryIterator:
