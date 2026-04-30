@@ -21,7 +21,7 @@ def test_product_initialization(sample_product):
 
 
 def test_product_price_setter():
-    p = Product("Тест", "Описание", 100, 5)
+    p = Product.new_product({"name": "Тест", "description": "Описание", "price": 100, "quantity": 5})
     p.price = 200
     assert p.price == 200
     with pytest.raises(ValueError):
@@ -92,7 +92,7 @@ def test_products_getter(sample_category):
 
 
 def test_new_product():
-    p = Product.new_product("Тест", "Описание", 100, 5)
+    p = Product.new_product({"name": "Тест", "description": "Описание", "price": 100, "quantity": 5})
     assert p.name == "Тест"
     assert p.price == 100
     assert p.quantity == 5
@@ -103,7 +103,7 @@ def test_new_product_with_duplicate():
         Product("Ноутбук", "Описание", 1000, 5),
         Product("Мышь", "Описание", 50, 10)
     ]
-    new = Product.new_product("Ноутбук", "Новое описание", 900, 3, existing)
+    new = Product.new_product({"name": "Ноутбук", "description": "Новое описание", "price": 900, "quantity": 3}, existing)
     assert new.price == 1000
     assert new.quantity == 8
     assert len(existing) == 1

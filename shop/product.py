@@ -10,7 +10,12 @@ class Product:
         return self.__price
 
     @classmethod
-    def new_product(cls, name, description, price, quantity, existing_products=None):
+    def new_product(cls, product_data: dict, existing_products=None):
+        name = product_data["name"]
+        description = product_data["description"]
+        price = product_data["price"]
+        quantity = product_data["quantity"]
+
         if existing_products:
             for prod in existing_products:
                 if prod.name == name:
