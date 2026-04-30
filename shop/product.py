@@ -2,12 +2,12 @@ class Product:
     def __init__(self, name: str, description: str, price: float, quantity: int):
         self.name = name
         self.description = description
-        self._price = price
+        self.__price = price
         self._quantity = quantity
 
     @property
     def price(self) -> float:
-        return self._price
+        return self.__price
 
     @classmethod
     def new_product(cls, name, description, price, quantity, existing_products=None):
@@ -21,15 +21,15 @@ class Product:
         return cls(name, description, price, quantity)
 
     @price.setter
-    def price(self, value):
+    def price(self, value: float):
         if value <= 0:
             raise ValueError("Цена не должна быть нулевая или отрицательная")
-        if value < self._price:
-            confirm = input(f"Цена понижается с {self._price} до {value}. Подтвердить? (y/n): ").lower()
+        if value < self.__price:
+            confirm = input(f"Цена понижается с {self.__price} до {value}. Подтвердить? (y/n): ").lower()
             if confirm != 'y':
-                print("Изменение цены отменено")
-                return
-        self._price = value
+               print("Изменение цены отменено")
+               return
+        self.__price = value
 
     @property
     def quantity(self) -> int:

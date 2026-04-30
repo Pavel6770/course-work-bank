@@ -8,7 +8,7 @@ class CategoryIterator:
         self._index = 0
 
     def __iter__(self):
-        return self
+        return iter(self._products)
 
     def __next__(self):
         if self._index >= len(self._products):
@@ -31,12 +31,8 @@ class Category:
         Category.product_count += len(products)
 
     @property
-    def products(self):
-        return self._products.copy()
-
-    @property
-    def products(self) -> List[Product]:
-        return self._products.copy()
+    def products(self) -> str:
+        return "\n".join(str(product) for product in self._products)
 
     def add_product(self, product: Product):
         if not isinstance(product, Product):
@@ -49,7 +45,7 @@ class Category:
         return f"{self.name}, количество продуктов: {total_quantity} шт."
 
     def __iter__(self):
-        return CategoryIterator(self)
+        return iter(self._products)
 
     def total_price(self) -> float:
         return sum(p.price * p.quantity for p in self._products)

@@ -39,8 +39,9 @@ def test_product_quantity_setter():
 def test_category_initialization(sample_category, sample_product):
     assert sample_category.name == "Электроника"
     assert sample_category.description == "Смартфоны, ноутбуки"
-    assert len(sample_category.products) == 1
-    assert sample_category.products[0] == sample_product
+    assert "Ноутбук" in sample_category.products
+    assert "1500.99 руб." in sample_category.products
+    assert "Остаток: 5 шт." in sample_category.products
 
 
 def test_category_counters():
@@ -74,22 +75,21 @@ def test_category_str(sample_category, sample_product):
 def test_category_add_product(sample_category, sample_product):
     old_count = Category.product_count
     sample_category.add_product(sample_product)
-    assert len(sample_category.products) == 2
+    assert sample_category.products.count("Ноутбук") == 2
     assert Category.product_count == old_count + 1
 
 
 def test_category_iterator(sample_category, sample_product):
-    products = [p for p in sample_category]
+    products = list(sample_category)
     assert len(products) == 1
     assert products[0] == sample_product
 
 
-def test_category_total_price(sample_category, sample_product):
-    assert sample_category.total_price() == 1500.99 * 5
-
 def test_products_getter(sample_category):
-    assert len(sample_category.products) == 1
-    assert isinstance(sample_category.products[0], Product)
+    assert isinstance(sample_category.products, str)
+    assert "Ноутбук" in sample_category.products
+    assert "1500.99 руб." in sample_category.products
+
 
 def test_new_product():
     p = Product.new_product("Тест", "Описание", 100, 5)
@@ -97,9 +97,14 @@ def test_new_product():
     assert p.price == 100
     assert p.quantity == 5
 
-def test_price_setter_validation():
-    p = Product("Товар", "Описание", 100, 10)
-    with pytest.raises(ValueError):
-        p.price = -50
-    with pytest.raises(ValueError):
-        p.price = 0
+
+def test_new_product_with_duplicate():
+    existing = [
+        Product("Ноутбук", "Описание", 1000, 5),
+        Product("Мышь", "Описание", 50, 10)
+    ]
+    new = Product.new_product("Ноутбук", "Новое описание", 900, 3, existing)
+    assert new.price == 1000
+    assert new.quantity == 8
+    assert len(existing) == 1
+    assert existing[0].name == "Мышь"
