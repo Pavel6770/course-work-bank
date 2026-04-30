@@ -3,7 +3,7 @@
 
 def get_greeting() -> str:
     current_hour = datetime.now().hour
-    
+
     if 6 <= current_hour < 12:
         return "Доброе утро"
     elif 12 <= current_hour < 18:
@@ -18,4 +18,3 @@ def print_greeting() -> None:
     greeting = get_greeting()
     print(f"{greeting}, Bro!")
     print("Welcome to Transaction Analysis Program!")
-

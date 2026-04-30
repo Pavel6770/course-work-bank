@@ -13,31 +13,33 @@ logger = logging.getLogger(__name__)
 # 1. Выгодные категории повышенного кешбэка
 # ============================================================
 
+
 def calculate_cashback_by_category(transactions: List[Dict[str, Any]], year: int, month: int) -> Dict[str, float]:
     """Анализирует, сколько кешбэка можно заработать по каждой категории."""
     logger.info(f"Расчёт кешбэка за {year}-{month:02d}")
-    
+
     expenses_by_category = {}
-    
+
     for t in transactions:
         try:
             t_date = datetime.strptime(t["date"], "%d.%m.%Y")
             amount = t.get("amount", 0)
             if isinstance(amount, str):
                 amount = float(amount)
-            
+
             if t_date.year == year and t_date.month == month and amount < 0:
                 category = t.get("category", "Без категории")
                 expenses_by_category[category] = expenses_by_category.get(category, 0) + abs(amount)
         except Exception as e:
             continue
-    
+
     return {cat: round(amt / 100, 2) for cat, amt in expenses_by_category.items()}
 
 
 # ============================================================
 # 2. Инвесткопилка
 # ============================================================
+
 
 def round_up(amount: float, limit: int) -> float:
     """Округляет сумму до ближайшего кратного limit вверх."""
@@ -49,40 +51,40 @@ def round_up(amount: float, limit: int) -> float:
 def investment_bank(month: str, transactions: List[Dict[str, Any]], limit: int) -> float:
     """Рассчитывает сумму, которую удалось бы отложить в Инвесткопилку."""
     logger.info(f"Расчёт инвесткопилки за {month} с шагом {limit}")
-    
+
     total_saved = 0.0
-    
+
     for t in transactions:
         date_str = t.get("date", "")
         amount_raw = t.get("amount", 0)
-        
+
         # Преобразуем amount в число
         try:
             amount = float(amount_raw)
         except (ValueError, TypeError):
             continue
-        
+
         # Только расходы
         if amount >= 0:
             continue
-        
+
         # Проверяем месяц
         try:
             t_date = datetime.strptime(date_str, "%d.%m.%Y")
             t_month = t_date.strftime("%Y-%m")
         except Exception:
             continue
-        
+
         if t_month != month:
             continue
-        
+
         # Округляем сумму
         abs_amount = abs(amount)
         rounded = round_up(abs_amount, limit)
         saved = rounded - abs_amount
         total_saved += saved
         logger.debug(f"Сумма: {abs_amount}, округлено: {rounded}, отложено: {saved}")
-    
+
     logger.info(f"За месяц накоплено: {total_saved:.2f} руб.")
     return round(total_saved, 2)
 
@@ -91,12 +93,14 @@ def investment_bank(month: str, transactions: List[Dict[str, Any]], limit: int) 
 # 3. Простой поиск
 # ============================================================
 
+
 def simple_search(transactions: List[Dict[str, Any]], query: str) -> List[Dict[str, Any]]:
     """Ищет транзакции по подстроке в описании или категории."""
     logger.info(f"Поиск: '{query}'")
     q_lower = query.lower()
     return [
-        t for t in transactions
+        t
+        for t in transactions
         if q_lower in t.get("description", "").lower() or q_lower in t.get("category", "").lower()
     ]
 
@@ -141,16 +145,16 @@ def search_transfers_to_individuals(transactions: List[Dict[str, Any]]) -> List[
 
 if __name__ == "__main__":
     from data_loader import get_transactions
-    
+
     transactions = get_transactions()
-    
-    print("\n" + "="*60)
+
+    print("\n" + "=" * 60)
     print("1. Выгодные категории кешбэка за декабрь 2021:")
     cashback = calculate_cashback_by_category(transactions, 2021, 12)
     for cat, amt in list(cashback.items())[:10]:
         print(f"   {cat}: {amt:.2f} руб.")
-    
-    print("\n" + "="*60)
+
+    print("\n" + "=" * 60)
     print("2. Инвесткопилка за декабрь 2021 (шаг 50 руб.):")
     saved = investment_bank("2021-12", transactions, 50)
     print(f"   Накоплено: {saved:.2f} руб.")

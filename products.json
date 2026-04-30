@@ -1,0 +1,26 @@
+[
+  {
+    "name": "iPhone 15 Pro",
+    "description": "Флагманский смартфон Apple",
+    "price": 120000.0,
+    "quantity": 10,
+    "category": "Смартфоны",
+    "category_description": "Мобильные телефоны"
+  },
+  {
+    "name": "Samsung Galaxy S24",
+    "description": "Флагманский смартфон Samsung",
+    "price": 110000.0,
+    "quantity": 8,
+    "category": "Смартфоны",
+    "category_description": "Мобильные телефоны"
+  },
+  {
+    "name": "Игровой ноутбук",
+    "description": "Мощный ноутбук для игр",
+    "price": 150000.0,
+    "quantity": 5,
+    "category": "Ноутбуки",
+    "category_description": "Портативные компьютеры"
+  }
+]

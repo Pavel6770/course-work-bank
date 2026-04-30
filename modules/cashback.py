@@ -23,7 +23,7 @@ def get_top_cashback_categories(transactions: List[Dict[str, Any]], top_n: int =
 
 if __name__ == "__main__":
     from data_loader import get_test_transactions
-    
+
     test_data = get_test_transactions()
     top_cb = get_top_cashback_categories(test_data)
     print("Топ кешбэк (тест):")

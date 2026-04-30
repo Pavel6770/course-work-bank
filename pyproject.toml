@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "course-work-bank"
+version = "0.1.0"
+description = "Online shop with products and categories"
+authors = ["PavliTyS Dvornikov <dvorkin-93@mail.ru>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.12"
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=9.0.3"
+flake8 = ">=7.3.0"
+black = ">=26.3.1"
+isort = ">=8.0.1"
+pytest-cov = ">=7.1.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+skip-string-normalization = true
+
+[tool.isort]
+profile = "black"
+line_length = 120
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+omit = [
+    "shop/base_product.py",
+    "shop/lawn_grass.py",
+    "shop/smartphone.py"
+]
