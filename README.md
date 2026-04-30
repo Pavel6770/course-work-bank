@@ -190,3 +190,91 @@ http://127.0.0.1:5000/
 
 }
 
+
+# 🛍️ Интернет-магазин: ООП-модель товаров
+
+Проект демонстрирует объектно-ориентированное программирование на Python на примере системы управления товарами интернет-магазина.
+
+## 📦 Основные возможности
+
+- Базовый класс `Product` для всех товаров
+- Классы-наследники:
+  - `Smartphone` — смартфон (добавлены: производительность, модель, память, цвет)
+  - `LawnGrass` — газонная трава (добавлены: страна-производитель, срок прорастания, цвет)
+- Класс `Category` для группировки товаров
+- Защита от сложения товаров разных типов (ошибка `TypeError`)
+- Защита от добавления в категорию объектов, не являющихся товарами
+
+## 🧪 Технологии
+
+- Python 3.12
+- pytest + coverage (покрытие 100%)
+- ООП: наследование, полиморфизм, инкапсуляция
+
+## 🚀 Запуск и тестирование
+
+### 1. Клонировать репозиторий
+```bash
+git clone https://github.com/Pavel6770/course-work-bank.git
+cd course-work-bank
+
+### 2. Установить зависимости
+#pip install -r requirements.txt
+
+### 3. Запустить тесты с проверкой покрытия
+# pytest tests/test_shop.py --cov=shop --cov-report=term
+
+### 🧱 Пример использования
+# from shop.smartphone import Smartphone
+from shop.lawn_grass import LawnGrass
+from shop.category import Category
+
+# Создание товаров
+iphone = Smartphone("iPhone 15", 120000, 5, "A17 Pro", "15 Pro", 256, "Black")
+grass = LawnGrass("Изумруд", 1500, 10, "Россия", 14, "Зелёный")
+
+# Категория
+cat = Category("Электроника")
+cat.add_product(iphone)      # ✅ можно
+# cat.add_product("не товар") # ❌ TypeError
+
+# Сложение одинаковых товаров
+print(iphone + iphone)       # ✅ 120000*5 + 120000*5
+
+# Сложение разных — ошибка
+# print(iphone + grass)      # ❌ TypeError
+
+
+
+### Критерии выполнения
+# Код соответствует PEP 8
+
+Классы Smartphone и LawnGrass — наследники Product
+
+Добавлены все требуемые атрибуты
+
+__add__ ограничивает сложение через type()
+
+add_product ограничивает типы через isinstance()
+
+Написаны тесты на новую функциональность
+
+Покрытие тестами — 100% (более 75%)
+
+
+### Результат тестов
+# ================= test session starts =================
+collected 10 items
+tests/test_shop.py ..........                    [100%]
+
+Name                   Stmts   Miss  Cover
+------------------------------------------
+shop/base_product.py      11      0   100%
+shop/category.py          12      0   100%
+shop/lawn_grass.py         7      0   100%
+shop/smartphone.py         8      0   100%
+TOTAL                     38      0   100%
+
+================= 10 passed in 0.10s ==================
+
+
