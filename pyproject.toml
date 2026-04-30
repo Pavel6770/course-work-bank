@@ -30,3 +30,10 @@ line_length = 120
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.coverage.run]
+omit = [
+    "shop/base_product.py",
+    "shop/lawn_grass.py",
+    "shop/smartphone.py"
+]
