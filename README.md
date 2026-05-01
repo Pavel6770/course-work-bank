@@ -190,3 +190,52 @@ http://127.0.0.1:5000/
 
 }
 
+
+
+## 🧬 Абстрактный класс и миксин
+
+В рамках третьей домашней работы реализована продвинутая ООП-архитектура:
+
+### `BaseProduct` (абстрактный класс)
+- Определяет обязательные методы `__str__` и `__add__` для всех продуктов
+- Использует `ABC` и `abstractmethod`
+
+### `LogMixin`
+- При создании объекта выводит в консоль информацию о классе и переданных параметрах
+- Добавлен в цепочку наследования класса `Product`
+
+### Иерархия классов
+- `BaseProduct` (абстрактный)
+- `Product(BaseProduct, LogMixin)`
+- `Smartphone(Product)`
+- `LawnGrass(Product)`
+
+### `Order` (дополнительное задание)
+- Хранит товар, количество и итоговую стоимость
+- Реализован метод `__str__`
+
+## 🧪 Тестирование
+
+```bash
+poetry run pytest tests/ --cov=src --cov-report=term
+Количество тестов: 32
+
+Покрытие: 89% (>75%)
+
+### Обновлённая структура
+# src/shop/
+├── abstract_classes.py   # BaseProduct
+├── mixins.py             # LogMixin
+├── product.py
+├── category.py
+├── smartphone.py
+├── lawn_grass.py
+└── order.py              # доп. задание
+tests/
+├── test_abstract_mixin.py
+├── test_product.py
+├── test_category.py
+├── test_smartphone_grass.py
+└── test_order.py
+
+
