@@ -1,58 +1,67 @@
-﻿from flask import Flask, render_template, request, jsonify
-import logging
-from datetime import datetime
-
-from views import main_page, events_page
-
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
-logger = logging.getLogger(__name__)
-
-app = Flask(__name__)
+from src.shop.product import Product
+from src.shop.smartphone import Smartphone
+from src.shop.lawn_grass import LawnGrass
+from src.shop.category import Category
 
 
-@app.route("/")
-def index():
-    return render_template("index.html")
+def main():
+    print("=== 1. Создание продуктов ===\n")
 
+    # Обычный продукт
+    laptop = Product("Ноутбук", "Игровой ноутбук", 1500.99, 5)
+    print(laptop)
 
-@app.route("/api/main")
-def api_main():
-    date_str = request.args.get("date", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-    logger.info(f"API main: date={date_str}")
+    # Смартфон
+    phone = Smartphone(
+        name="iPhone 15",
+        description="Флагман Apple",
+        price=120000,
+        quantity=10,
+        efficiency="A17 Pro",
+        model="15 Pro",
+        memory=256,
+        color="Silver"
+    )
+    print(phone)
+
+    # Газонная трава
+    grass = LawnGrass(
+        name="Изумруд",
+        description="Газонная трава",
+        price=1500,
+        quantity=20,
+        country="Россия",
+        germination_period=14,
+        color="Зелёный"
+    )
+    print(grass)
+
+    print("\n=== 2. Сложение продуктов ===\n")
+    # Складываем два смартфона
+    phone2 = Smartphone("Samsung", "Флагман", 110000, 5, "Snapdragon", "S24", 512, "Black")
+    total_price = phone + phone2
+    print(f"Сумма двух смартфонов: {total_price} руб.")
+
+    # Попытка сложить смартфон и траву (должна быть ошибка)
     try:
-        result = main_page(date_str)
-        return jsonify(result)
-    except Exception as e:
-        logger.error(f"Error in api_main: {e}")
-        return jsonify({"error": str(e)}), 500
+        result = phone + grass
+    except TypeError as e:
+        print(f"Ошибка (ожидаемо): {e}")
 
+    print("\n=== 3. Категория и добавление товаров ===\n")
+    electronics = Category("Электроника", "Гаджеты", [laptop, phone])
+    print(electronics)
+    print("Товары в категории:\n", electronics.products)
 
-@app.route("/api/events")
-def api_events():
-    date_str = request.args.get("date", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-    period = request.args.get("period", "M")
-    logger.info(f"API events: date={date_str}, period={period}")
-    try:
-        result = events_page(date_str, period)
-        return jsonify(result)
-    except Exception as e:
-        logger.error(f"Error in api_events: {e}")
-        return jsonify({"error": str(e)}), 500
+    # Добавляем ещё один смартфон
+    electronics.add_product(phone2)
+    print(f"\nПосле добавления: {electronics}")
+    print("Обновлённый список:\n", electronics.products)
 
-
-@app.route("/api/search")
-def api_search():
-    query = request.args.get("q", "")
-    logger.info(f"API search: query={query}")
-    
-    from modules.search import search_transactions
-    from data_loader import get_transactions
-    
-    transactions = get_transactions()
-    results = search_transactions(transactions, query)
-    
-    return jsonify(results[:100])
+    print("\n=== 4. Итерация по категории ===\n")
+    for product in electronics:
+        print(f"  - {product}")
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    main()
