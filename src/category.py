@@ -1,6 +1,6 @@
 from typing import List
-from src.shop.product import Product
-from src.shop.exceptions import ZeroQuantityError
+from src.product import Product
+from src.exceptions import ZeroQuantityError
 
 
 class CategoryIterator:

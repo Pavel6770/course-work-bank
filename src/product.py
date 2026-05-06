@@ -1,5 +1,5 @@
-from src.shop.abstract_classes import BaseProduct
-from src.shop.mixins import LogMixin
+from src.abstract_classes import BaseProduct
+from src.mixins import LogMixin
 
 
 class Product(BaseProduct, LogMixin):

@@ -1,5 +1,6 @@
 import pytest
-from src.shop.product import Product
+from src.category import Category
+from src.product import Product
 
 
 def test_product_creation():
