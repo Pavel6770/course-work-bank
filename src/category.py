@@ -1,6 +1,6 @@
 from typing import List
-from src.shop.product import Product
-from src.shop.exceptions import ZeroQuantityError
+from src.product import Product
+from src.exceptions import ZeroQuantityError
 
 
 class CategoryIterator:
@@ -37,6 +37,8 @@ class Category:
 
     def add_product(self, product: Product):
         try:
+            if not isinstance(product, Product):
+                raise TypeError("Можно добавлять только объекты Product")
             if product.quantity == 0:
                 raise ZeroQuantityError("Нельзя добавить товар с нулевым количеством")
             self._products.append(product)
@@ -47,12 +49,6 @@ class Category:
             print(f"Товар '{product.name}' успешно добавлен в категорию '{self.name}'")
         finally:
             print("Обработка добавления товара завершена")
-        if product.quantity == 0:
-            raise ZeroQuantityError("Нельзя добавить товар с нулевым количеством")
-        if not isinstance(product, Product):
-            raise TypeError("Можно добавлять только объекты Product")
-        self._products.append(product)
-        Category.product_count += 1
 
     def average_price(self) -> float:
         if not self._products:

@@ -237,3 +237,11 @@ try:
     p = Product("Телефон", "Смартфон", 50000, 0)
 except ValueError as e:
     print(e)  # Товар с нулевым количеством не может быть добавлен
+
+## 🧪 Тестирование и покрытие
+
+Для запуска тестов и проверки покрытия выполните:
+
+```bash
+poetry run pytest tests/ --cov=src --cov-report=term
+poetry run pytest tests/ --cov=src --cov-report=html
